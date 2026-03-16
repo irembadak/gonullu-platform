@@ -1,0 +1,53 @@
+/* ActivityCarousel.css */
+
+.activity-carousel-wrapper {
+  padding: 40px 0;
+  overflow: hidden;
+}
+
+.carousel-container-modern {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 15px 20px 30px 20px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollbar'ı şık ve ince yapalım */
+.carousel-container-modern::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carousel-container-modern::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 10px;
+}
+
+.carousel-container-modern::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modern-activity-card {
+  min-width: 300px;
+  max-width: 300px;
+  border-radius: 20px !important;
+  border: 1px solid #f1f5f9 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  flex-shrink: 0; /* Kartların ezilmesini engeller */
+}
+
+.modern-activity-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+  border-color: #3498db !important;
+}
+
+.modern-activity-card .MuiButton-contained {
+  background-color: #3498db;
+}
+
+.modern-activity-card .MuiButton-contained:hover {
+  background-color: #2980b9;
+}

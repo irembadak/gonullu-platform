@@ -1,0 +1,67 @@
+.recommend-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+.recommend-header {
+  text-align: left;
+  margin-bottom: 30px;
+  border-left: 5px solid #3498db;
+  padding-left: 15px;
+}
+
+.recommend-header h4 {
+  color: #2c3e50;
+  font-weight: bold;
+}
+.ai-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.ai-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #3498db;
+}
+
+.ai-card-info {
+  flex-grow: 1;
+}
+
+.ai-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #7f8c8d;
+  margin-top: 8px;
+}
+.btn-join {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-join:hover {
+  background-color: #2980b9;
+}
+.loading-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
+}

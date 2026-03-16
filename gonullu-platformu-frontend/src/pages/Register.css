@@ -1,0 +1,58 @@
+/* Register.css */
+
+.register-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
+}
+
+.register-paper {
+  padding: 40px !important;
+  border-radius: 24px !important;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1) !important;
+}
+
+.register-logo-circle {
+  width: 70px;
+  height: 70px;
+  background: #27ae60; /* Kayıt için yeşil tonu */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+}
+
+.register-btn-styled {
+  padding: 12px !important;
+  border-radius: 12px !important;
+  font-weight: bold !important;
+  font-size: 1rem !important;
+  background-color: #27ae60 !important; /* Kayıt butonu yeşil */
+  text-transform: none !important;
+}
+
+.register-btn-styled:hover {
+  background-color: #219150 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3) !important;
+}
+
+.link-text {
+  cursor: pointer;
+  color: #3498db;
+  transition: 0.2s;
+  text-decoration: none;
+}
+
+.link-text.bold {
+  font-weight: 700;
+}
+
+.link-text:hover {
+  color: #2c3e50;
+  text-decoration: underline;
+}

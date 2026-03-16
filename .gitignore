@@ -1,0 +1,22 @@
+node_modules/
+.env
+*.log
+dist/
+.DS_Store
+.env
+# Firebase ve config dosyaları
+*.json
+config/*
+*.env
+*.key
+config/*.json
+config/gonullu-platformu-firebase-adminsdk-*.json
+config/gonullu_platformu-firebase-adminsdk-*.json
+node_modules/
+.env
+config/*.json # serviceAccountKey gibi
+node_modules/
+.env
+config/*.json
+node_modules/
+.env

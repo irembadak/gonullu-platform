@@ -1,0 +1,28 @@
+/* CreateEvent.css - Özel Dokunuşlar */
+
+.create-event-container {
+  background-color: #f4f7f9;
+  min-height: 100vh;
+}
+
+/* Harita bileşeninin form içindeki yüksekliği */
+.map-container {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* Form tarlaları arasındaki geçiş yumuşaklığı */
+.MuiOutlinedInput-root {
+  transition: all 0.2s ease-in-out;
+}
+
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #3498db;
+}
+
+/* Mobil uyum için ufak ayar */
+@media (max-width: 600px) {
+  .MuiPaper-root {
+    padding: 20px !important;
+  }
+}

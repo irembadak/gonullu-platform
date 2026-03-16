@@ -1,0 +1,32 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8fafc; /* Daha modern bir gri-beyaz */
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  max-width: 1400px; /* Geniş ekranlarda içeriği toplu tutar */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Scrollbar tasarımı (Senior detayı) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}

@@ -1,0 +1,42 @@
+/* TransportationSupport.css */
+
+.transport-card-modern {
+  border-radius: 16px !important;
+  transition: all 0.3s ease;
+  border: 1px solid #f1f5f9 !important;
+}
+
+.transport-card-modern:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.08) !important;
+}
+
+/* Teklif vs Talep Kenar Vurgusu */
+.transport-card-modern.offer {
+  border-left: 5px solid #3498db !important;
+}
+
+.transport-card-modern.request {
+  border-left: 5px solid #27ae60 !important;
+}
+
+.route-display {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.route-display h6 {
+  color: #1e293b;
+  font-size: 1.1rem !important;
+}
+
+/* Tablar arası geçişte netlik */
+.MuiTabs-indicator {
+  height: 3px !important;
+}
+
+.MuiTab-root {
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+}

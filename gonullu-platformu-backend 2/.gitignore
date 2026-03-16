@@ -1,0 +1,17 @@
+.env
+.env.backup
+config/serviceAccountKey.json
+config/*.json
+node_modules/
+
+# Logs (Hata kayıtlarının gitmemesi için)
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Files (Sistem dosyaları)
+.DS_Store
+Thumbs.db
+
+# Production build (Eğer backend'i build alıyorsan)
+dist/

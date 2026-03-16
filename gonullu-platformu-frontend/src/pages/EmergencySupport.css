@@ -1,0 +1,39 @@
+/* EmergencySupport.css */
+
+.emergency-card-modern {
+  border-radius: 16px !important;
+  border-top: 5px solid #c0392b !important; /* Üst kısımdaki kırmızı vurgu */
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.emergency-card-modern:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(192, 57, 43, 0.15) !important;
+}
+
+.emergency-type {
+  font-weight: 800 !important;
+  color: #c0392b;
+  letter-spacing: 1px;
+}
+
+/* Yardım Et Butonu için Nabız Efekti */
+.help-btn-pulse {
+  font-weight: bold !important;
+  border-radius: 8px !important;
+  transition: all 0.2s !important;
+}
+
+.help-btn-pulse:hover {
+  background-color: #a93226 !important;
+  box-shadow: 0 0 15px rgba(192, 57, 43, 0.5) !important;
+}
+
+/* Yükleme ve Liste Boş Hali */
+.no-emergencies-box {
+  border: 2px dashed #e0e0e0;
+  padding: 50px;
+  border-radius: 16px;
+  background: #fafafa;
+}
