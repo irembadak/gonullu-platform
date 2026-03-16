@@ -68,7 +68,7 @@ const Profile = () => {
     setSuccess('');
 
     try {
-      // Backend'in beklediği tam GeoJSON formatı
+      // GeoJSON formatı
       const updatedData = {
         name: formData.name,
         skills: formData.skills.split(',').map(s => s.trim()).filter(Boolean),

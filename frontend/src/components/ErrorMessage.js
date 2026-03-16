@@ -8,7 +8,7 @@ export default function ErrorMessage({ message, title = "Bir Hata Oluştu" }) {
       <Box sx={{ my: 3, width: '100%' }}>
         <Alert 
           severity="error" 
-          variant="filled" // "filled" daha kurumsal ve dikkat çekici durur
+          variant="filled" 
           icon={<ErrorOutlineIcon fontSize="inherit" />}
           sx={{ 
             borderRadius: 2, 

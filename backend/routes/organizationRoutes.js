@@ -8,7 +8,6 @@ const User = require('../models/User');
 // @access  Private (Sadece giriş yapmış kullanıcılar)
 exports.createOrganization = async (req, res) => {
   try {
-    // Önce bu kullanıcının zaten bir STK başvurusu var mı kontrol et
     const existingOrg = await Organization.findOne({ user: req.user.id });
     
     if (existingOrg) {
@@ -17,13 +16,11 @@ exports.createOrganization = async (req, res) => {
 
     const orgData = {
       ...req.body,
-      user: req.user.id, // Modelde 'user' olarak tanımladığımız için burayı user yaptık
+      user: req.user.id,
       status: 'pending'
     };
 
     const organization = await Organization.create(orgData);
-
-    // Başvuru yapan kullanıcının rolünü 'stk' olarak güncelle (Opsiyonel: Onaylanınca da yapılabilir)
     await User.findByIdAndUpdate(req.user.id, { role: 'stk' });
 
     res.status(201).json({

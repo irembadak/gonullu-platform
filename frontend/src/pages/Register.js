@@ -15,7 +15,6 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import BusinessIcon from '@mui/icons-material/Business';
 
 const Register = () => {
-  // FormData'ya default olarak 'volunteer' rolünü ekledik
   const [formData, setFormData] = useState({ 
     name: '', 
     email: '', 
@@ -41,11 +40,10 @@ const Register = () => {
     setSuccess('');
 
     try {
-      // register fonksiyonuna formData içindeki name ve role bilgilerini gönderiyoruz
       await register(formData.email, formData.password, {
         name: formData.name,
         email: formData.email,
-        role: formData.role // Rol bilgisini backend'e iletiyoruz
+        role: formData.role 
       });
       
       setSuccess('Kayıt başarılı! Yönlendiriliyorsunuz...');

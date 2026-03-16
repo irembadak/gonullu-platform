@@ -4,7 +4,6 @@ const admin = require('../config/firebase');
 // @desc    Mevcut kullanıcı bilgilerini getir
 exports.getMe = async (req, res) => {
     try {
-        // req.user.id üzerinden kullanıcıyı bul (protect middleware'inden gelir)
         const user = await User.findOne({ firebaseUid: req.user.firebaseUid || req.user.id }).select('-password -__v');
         if (!user) return res.status(404).json({ success: false, message: "Kullanıcı bulunamadı" });
         res.status(200).json({ success: true, data: user });
@@ -20,8 +19,6 @@ exports.registerUser = async (req, res) => {
         
         let user = await User.findOne({ firebaseUid });
         if (user) return res.status(400).json({ success: false, message: "Kullanıcı zaten kayıtlı" });
-
-        // Kayıt sırasında rolü 'stk' ise bekleyen rütbe olarak ata, 'volunteer' olarak başlat
         user = await User.create({ 
             firebaseUid, 
             name, 
@@ -97,8 +94,6 @@ exports.updateMyProfile = async (req, res) => {
                 }
             }
         });
-
-        // Veri tutarlılığı koruma
         if (user.role === 'stk') {
             user.isVerified = true;
         }

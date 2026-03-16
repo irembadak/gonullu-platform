@@ -1,8 +1,6 @@
-/* EmergencySupport.css */
-
 .emergency-card-modern {
   border-radius: 16px !important;
-  border-top: 5px solid #c0392b !important; /* Üst kısımdaki kırmızı vurgu */
+  border-top: 5px solid #c0392b !important; 
   transition: all 0.3s ease;
   background-color: #fff;
 }
@@ -17,8 +15,6 @@
   color: #c0392b;
   letter-spacing: 1px;
 }
-
-/* Yardım Et Butonu için Nabız Efekti */
 .help-btn-pulse {
   font-weight: bold !important;
   border-radius: 8px !important;
@@ -29,8 +25,6 @@
   background-color: #a93226 !important;
   box-shadow: 0 0 15px rgba(192, 57, 43, 0.5) !important;
 }
-
-/* Yükleme ve Liste Boş Hali */
 .no-emergencies-box {
   border: 2px dashed #e0e0e0;
   padding: 50px;

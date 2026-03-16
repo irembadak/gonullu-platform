@@ -54,8 +54,6 @@ const VolunteerActivities = () => {
     });
     setFilteredEvents(filtered);
   }, [searchTerm, categoryFilter, events]);
-
-  // --- YENİ EKLENEN KATILMA FONKSİYONU ---
   const handleJoinEvent = async (eventId) => {
     if (!currentUser) {
       alert("Etkinliğe katılmak için önce giriş yapmalısınız!");
@@ -63,14 +61,10 @@ const VolunteerActivities = () => {
     }
 
     try {
-      // Backend'deki joinEvent fonksiyonunu tetikliyoruz
       await API.post(`/events/${eventId}/join`);
       alert("Etkinliğe başarıyla katıldınız! Teşekkür ederiz.");
-      
-      // İstersen burada fetchEvents() fonksiyonunu tekrar çağırıp listeyi güncelleyebilirsin.
     } catch (err) {
       console.error("Katılma hatası:", err);
-      // Backend "Zaten kayıtlısınız" diyebilir, bu mesajı kullanıcıya gösteriyoruz.
       alert(err || "Bu etkinliğe katılırken bir sorun oluştu.");
     }
   };
@@ -192,7 +186,7 @@ const VolunteerActivities = () => {
                     <Button 
                      fullWidth 
                      variant="contained" 
-                     onClick={() => navigate(`/activity/${event._id}`)} // ARTIK DETAY SAYFASINA UÇURACAK!
+                     onClick={() => navigate(`/activity/${event._id}`)} 
                      sx={{ mt: 3, borderRadius: 2, py: 1.2, textTransform: 'none', fontWeight: 'bold', boxShadow: 'none' }}
           >
                      Detayları Gör & Katıl

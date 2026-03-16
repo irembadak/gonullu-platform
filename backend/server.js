@@ -10,7 +10,6 @@ const chalk = require('chalk');
 const PORT = process.env.PORT || 3001;
 const HOST = '0.0.0.0';
 
-// Firebase Admin Başlatma
 const firebaseConfig = process.env.FIREBASE_PRIVATE_KEY 
   ? {
       credential: admin.credential.cert({
@@ -32,43 +31,36 @@ if (!admin.apps.length) {
 
 const startServer = async () => {
   try {
-    // 1. Veritabanı bağlantısını sağla (Önce veritabanı, sonra sunucu)
     await connectDB();
     console.log(chalk.green('✔ MongoDB bağlantısı başarılı.'));
-
-    // 2. HTTP Sunucusunu Oluştur
     const server = http.createServer(app);
 
     server.listen(PORT, HOST, () => {
       console.log('\n' + chalk.bold.bgGreen.black(' SİSTEM AKTİF ') + '\n');
       console.log(chalk.bold.cyan(`🚀 Backend: http://localhost:${PORT}`));
       console.log(chalk.gray('-------------------------------------------') + '\n');
-      
-      // 3. Senkronizasyon Servisi (Sadece eksik kullanıcılar için - Mevcutları BOZMAZ)
       console.log(chalk.blue('ℹ Senkronizasyon kontrol ediliyor...'));
       syncFirebaseToMongo()
         .then(() => console.log(chalk.blue('✔ Senkronizasyon işlemi tamamlandı.')))
         .catch(err => {
-            // Hata olsa bile sunucu çalışmaya devam eder
-            console.warn(chalk.yellow('⚠ Senkronizasyon uyarısı: Veri tabanında çakışma olabilir ama sistem çalışıyor.'));
+            console.warn(chalk.yellow(' Senkronizasyon uyarısı: Veri tabanında çakışma olabilir ama sistem çalışıyor.'));
         });
         
     }).on('error', (err) => {
       if (err.code === 'EADDRINUSE') {
-        console.error(chalk.red(`❌ HATA: ${PORT} portu meşgul! Lütfen diğer terminali kapat.`));
+        console.error(chalk.red(` HATA: ${PORT} portu meşgul! Lütfen diğer terminali kapat.`));
         process.exit(1);
       } else {
-        console.error(chalk.red('❌ Sunucu başlatma hatası:'), err);
+        console.error(chalk.red('Sunucu başlatma hatası:'), err);
       }
     });
 
   } catch (startupError) {
-    console.error(chalk.bgRed('❌ KRİTİK HATA: Sunucu başlatılamadı:'), startupError);
+    console.error(chalk.bgRed(' KRİTİK HATA: Sunucu başlatılamadı:'), startupError);
     process.exit(1);
   }
 };
 
-// Hata yönetimi
 process.on('unhandledRejection', (err) => {
   console.error(chalk.red(`Beklenmedik Hata: ${err.message}`));
 });

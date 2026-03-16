@@ -1,11 +1,9 @@
-/* LoadingSpinner.css */
-
 .spinner-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 200px; /* Sayfa içinde yer kaplasın ki layout zıplamasın */
+  min-height: 200px; 
   width: 100%;
 }
 

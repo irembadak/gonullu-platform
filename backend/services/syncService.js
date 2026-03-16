@@ -10,17 +10,13 @@ const syncFirebaseToMongo = async () => {
       updateOne: {
         filter: { firebaseUid: fbUser.uid },
         update: {
-          // $setOnInsert: Sadece kullanıcı ilk kez oluşturulurken bu verileri yazar.
-          // Mevcut kullanıcıda bu alanlar ASLA değişmez.
           $setOnInsert: { 
             email: fbUser.email,
             name: fbUser.displayName || 'Yeni Gönüllü',
-            role: 'volunteer', // Varsayılan rütbe sadece ilk kayıtta
+            role: 'volunteer', 
             isVerified: false,
             password: 'tempPassword123'
           },
-          // $set: Sadece teknik/güncel kalması gereken verileri günceller.
-          // Rütbe (role) ve İsim (name) alanlarını buraya EKLEMEDİK ki MongoDB'deki verin korunsun.
           $set: {
             firebaseUid: fbUser.uid
           }
@@ -30,8 +26,6 @@ const syncFirebaseToMongo = async () => {
     }));
 
     if (userOps.length > 0) await User.bulkWrite(userOps);
-
-    // Etkinlik Senkronizasyonu
     const eventsSnapshot = await admin.database().ref('events').once('value');
     const eventsData = eventsSnapshot.val();
 
@@ -45,7 +39,7 @@ const syncFirebaseToMongo = async () => {
               $set: {
                 title: data.title,
                 description: data.description,
-                status: data.status || 'pending' // Default olarak beklemede
+                status: data.status || 'pending' 
               }
             },
             upsert: true

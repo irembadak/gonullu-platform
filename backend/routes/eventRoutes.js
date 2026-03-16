@@ -7,7 +7,6 @@ router.use(protect);
 
 router.route('/')
   .get(getEvents) 
-  // verifyCheck'i mülakat için şimdilik kaldırıyoruz veya req.user kontrolünü güvene alıyoruz
   .post(roleAuth(['stk', 'admin']), createEvent); 
   router.get('/:id', getEventById);
 

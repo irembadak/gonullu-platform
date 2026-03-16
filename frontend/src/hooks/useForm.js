@@ -11,8 +11,6 @@ export const useForm = (initialValues, validate) => {
       ...values,
       [name]: value
     });
-
-    // UX Dokunuşu: Kullanıcı yazmaya başladığında o alanın hatasını temizle
     if (errors[name]) {
       setErrors({
         ...errors,

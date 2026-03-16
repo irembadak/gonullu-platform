@@ -30,7 +30,6 @@ export default function AdminDashboard() {
     const fetchPendingEvents = async () => {
       try {
         const response = await API.get(`/events/pending`);
-        // Backend'den gelen verinin yapısına göre kontrol (res veya res.data)
         const data = response.data || response;
         setPendingEvents(Array.isArray(data) ? data : []);
       } catch (err) {
@@ -69,7 +68,7 @@ export default function AdminDashboard() {
             <Typography variant="h6" color="textSecondary">Sistem Yönetimi ve Onay Merkezi</Typography>
           </Box>
 
-          {/* İstatistik Kartları (CSS'indeki stat-card yapısını kullanıyoruz) */}
+          {/* İstatistik Kartları  */}
           <div className="stats-grid">
             <div className="stat-card">
               <h4>Bekleyen Onaylar</h4>

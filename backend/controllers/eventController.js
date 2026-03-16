@@ -15,14 +15,8 @@ exports.createEvent = async (req, res) => {
             organization: organizationId,
             status: 'approved' 
         };
-
-        // 1. MongoDB Kaydı
         const event = await Event.create(eventData);
-
-        // 2. Yanıtı Hemen Dön
         res.status(201).json({ success: true, data: event });
-
-        // 3. Arka Plan İşlemleri
         setImmediate(async () => {
             try {
                 const db = admin.database();
@@ -49,14 +43,9 @@ exports.createEvent = async (req, res) => {
 exports.getEvents = async (req, res) => {
     try {
         console.log("--- DEBUG: Tüm etkinlikler çekiliyor ---");
-        
-        // KRİTİK DEĞİŞİKLİK: Süslü parantezlerin içini boşalttık {}. 
-        // Veritabanında status ne olursa olsun her şeyi getirir.
         const events = await Event.find({}).populate('organization', 'name profilePhoto'); 
         
         console.log(`Veritabanında toplam ${events.length} adet doküman bulundu.`);
-        
-        // Veriyi direkt dizi olarak dönüyoruz
         res.status(200).json(events);
     } catch (err) { 
         console.error("Etkinlik getirme hatası:", err);
@@ -97,18 +86,16 @@ exports.rejectEvent = async (req, res) => {
         res.status(200).json({ success: true, data: event });
     } catch (err) { res.status(500).json({ success: false }); }
 };
-// KRİTİK EKLENTİ: Tek bir etkinliğin tüm detaylarını ID'sine göre getiren fonksiyon
+
 exports.getEventById = async (req, res) => {
     try {
         const event = await Event.findById(req.params.id)
             .populate('organization', 'name email profilePhoto')
-            .populate('participants', 'name email'); // İsteğe bağlı, katılımcıların adını görmek için
+            .populate('participants', 'name email'); 
             
         if (!event) {
             return res.status(404).json({ success: false, message: 'Etkinlik bulunamadı' });
         }
-        
-        // Frontend'in beklediği gibi direkt veriyi dönüyoruz
         res.status(200).json(event);
     } catch (err) {
         console.error("Etkinlik detay hatası:", err);

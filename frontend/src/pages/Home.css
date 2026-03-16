@@ -1,31 +1,26 @@
-/* Home.css - Modern Gönüllü Platformu Tasarımı */
-
 .home {
-  /* Senin tanımladığın değişkenlere birkaç "Premium" ekleme yaptım */
   --primary-dark: #2c3e50;
   --primary-light: #34495e;
   --text-light: #ffffff;
   --blue: #3498db;
-  --background-page: #f4f7f9; /* Biraz daha yumuşak bir gri */
+  --background-page: #f4f7f9;
   --white: #ffffff;
   --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --border-radius-lg: 16px; /* Daha yuvarlak, modern köşeler */
+  --border-radius-lg: 16px; 
   
-  max-width: 100% !important; /* Hero'nun tam genişlik olması için */
+  max-width: 100% !important; 
   margin: 0;
   padding: 0;
   background-color: var(--background-page);
   font-family: 'Inter', -apple-system, sans-serif;
 }
-
-/* --- Hero Section: Tam bir 'Eye-Catcher' --- */
 .hero-section {
   text-align: center;
   padding: 120px 20px;
   background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #3498db 100%);
   color: var(--text-light);
-  margin-bottom: 0; /* Özellikler kartlarıyla birleşecek */
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* Modern eğimli kesim */
+  margin-bottom: 0; 
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); 
 }
 
 .hero-section h1 {
@@ -42,14 +37,12 @@
   margin: 0 auto 40px;
   opacity: 0.9;
 }
-
-/* --- Features Section: Havada asılı kartlar --- */
 .features-section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   max-width: 1200px;
-  margin: -60px auto 60px; /* Hero'nun içine girerek modern durmasını sağlar */
+  margin: -60px auto 60px;
   padding: 0 20px;
   position: relative;
   z-index: 10;
@@ -75,8 +68,6 @@
   color: var(--primary-dark);
   margin: 15px 0;
 }
-
-/* --- Map & Activities: Temiz ve Düzenli --- */
 .map-section, 
 .activities-section {
   max-width: 1200px;
@@ -106,8 +97,6 @@
   background: var(--blue);
   border-radius: 2px;
 }
-
-/* Harita kutusu için profesyonel çerçeve */
 .map-preview-wrapper {
   border-radius: 12px;
   overflow: hidden;
@@ -115,7 +104,6 @@
   height: 450px;
 }
 
-/* Responsive Dokunuşlar */
 @media (max-width: 768px) {
   .hero-section h1 { font-size: 2.5rem; }
   .features-section { margin-top: 20px; }

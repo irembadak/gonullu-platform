@@ -41,8 +41,6 @@ const UserList = () => {
       setSyncing(false);
     }
   };
-
-  // Rol bazlı renk belirleme
   const getRoleChip = (role) => {
     const roles = {
       admin: { label: 'Admin', color: 'error', icon: <AdminPanelSettingsIcon fontSize="small" /> },

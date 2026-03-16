@@ -1,4 +1,3 @@
-// Event.js - Son halini bununla değiştir
 const mongoose = require('mongoose');
 
 const eventSchema = new mongoose.Schema({
@@ -76,6 +75,4 @@ eventSchema.virtual('remainingCapacity').get(function() {
 
 eventSchema.index({ location: '2dsphere' });
 eventSchema.index({ category: 1, status: 1 }); 
-
-// KRİTİK DEĞİŞİKLİK: 'events' parametresini ekleyerek koleksiyon adını sabitledik
 module.exports = mongoose.model('Event', eventSchema, 'events');

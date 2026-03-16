@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import MapPreview from '../components/MapPreview';
 import ActivityCarousel from '../components/ActivityCarousel';
-import Recommend from './Recommend'; // AI ÖNERİLERİ KÖPRÜSÜ EKLENDİ!
+import Recommend from './Recommend'; 
 import { eventService } from '../services/api'; 
 import { Container, Grid, Typography, Button, Box, Skeleton, Alert } from '@mui/material';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
@@ -20,10 +20,7 @@ const Home = () => {
     const fetchEvents = async () => {
       try {
         setLoading(true);
-        // KRİTİK DÜZELTME: getEvents() değil, api.js'deki doğru isim olan getAll() kullanıldı.
         const res = await eventService.getAll(); 
-        
-        // KURŞUN GEÇİRMEZ VERİ YAKALAYICI
         let rawData = [];
         if (Array.isArray(res)) {
             rawData = res;

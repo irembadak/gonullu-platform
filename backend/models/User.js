@@ -23,13 +23,11 @@ const UserSchema = new mongoose.Schema({
     minlength: [6, 'Şifre en az 6 karakter olmalı'],
     select: false
   },
-  // Kural: Herkes teknik olarak 'volunteer' başlar
   role: {
     type: String,
     enum: ['volunteer', 'admin', 'stk'],
     default: 'volunteer'
   },
-  // KRİTİK ALAN: Kullanıcının yükselmek istediği rütbe (Örn: 'stk')
   pendingRole: {
     type: String,
     default: null
@@ -50,8 +48,6 @@ const UserSchema = new mongoose.Schema({
   skills: [String],
   joinedEvents: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }],
   profilePhoto: { type: String, default: '' },
-  
-  // Sadece Admin onayıyla true olur (STK yetkileri için)
   isVerified: { 
     type: Boolean, 
     default: false 

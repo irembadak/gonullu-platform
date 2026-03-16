@@ -3,10 +3,7 @@ import { useToast } from '../hooks/useToast';
 
 export const useNotification = () => {
   const toast = useToast();
-
-  // Merkezi bildirim tetikleyici (MUI ve projenin geri kalanıyla uyumlu)
   const showToast = (title, message, status) => {
-    // useToast hook'umuz artık daha esnek bir yapıya sahip
     toast({
       title: title,
       description: message,
@@ -14,19 +11,15 @@ export const useNotification = () => {
       duration: 4000,
     });
   };
-
-  // Firebase Push Notification token'ını veritabanına mühürler
   const registerToken = async (fcmToken) => {
     if (!fcmToken) return;
 
     try {
-      // Backend tarafında bu endpoint'in olduğundan emin olmalıyız
       await API.post('/users/register-fcm-token', {
         token: fcmToken,
       });
       console.log('🔔 FCM Token sisteme mühürlendi.');
     } catch (error) {
-      // Sessiz hata yönetimi: Kullanıcıyı rahatsız etmeden logla
       console.error('FCM token kaydı başarısız (Backend hatası):', error);
     }
   };

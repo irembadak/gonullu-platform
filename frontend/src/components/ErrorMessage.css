@@ -1,7 +1,4 @@
-/* ErrorMessage.css */
-
 .error-message-wrapper {
-  /* MUI Box zaten yönetiyor ama özel animasyon eklemek istersen burayı kullanabilirsin */
   animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
 }
 

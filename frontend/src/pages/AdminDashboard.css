@@ -1,7 +1,4 @@
-/* AdminDashboard.css - Profesyonel Yönetim Paneli Teması */
-
 .admin-dashboard {
-  /* Renk Paleti ve Değişkenler */
   --primary-dark: #2c3e50;
   --primary-medium: #34495e;
   --primary-light: #7f8c8d;
@@ -19,8 +16,6 @@
   --border-radius-lg: 16px;
   --border-radius-md: 12px;
 }
-
-/* Sayfa Temeli */
 .admin-dashboard {
   max-width: 1400px;
   margin: 0 auto;
@@ -28,8 +23,6 @@
   background-color: var(--background-page);
   font-family: 'Inter', -apple-system, sans-serif;
 }
-
-/* Dashboard Header */
 .dashboard-header {
   margin-bottom: 40px;
   padding-bottom: 20px;
@@ -41,8 +34,6 @@
   font-weight: 500;
   margin-top: 5px;
 }
-
-/* İstatistik Kartları (Stats Grid) */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -81,8 +72,6 @@
 
 .stat-card.green { border-left-color: var(--green); }
 .stat-card.red { border-left-color: var(--red); }
-
-/* Etkinlik Kartları (Events Grid) */
 .events-grid {
   margin-top: 20px;
 }
@@ -127,8 +116,6 @@
   display: block;
   margin-bottom: 4px;
 }
-
-/* Kart Altı Buton Alanı */
 .event-actions {
   display: flex;
   gap: 10px;
@@ -137,8 +124,6 @@
   border-top: 1px solid var(--border-color);
   justify-content: flex-end;
 }
-
-/* Mesajlar */
 .no-events {
   text-align: center;
   padding: 60px;
@@ -156,8 +141,6 @@
   border: 1px solid var(--red);
   margin-bottom: 20px;
 }
-
-/* Responsive Düzenlemeler */
 @media (max-width: 768px) {
   .admin-dashboard { padding: 20px 10px; }
   .stats-grid { grid-template-columns: 1fr; }

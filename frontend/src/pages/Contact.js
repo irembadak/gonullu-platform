@@ -7,8 +7,8 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import BusinessIcon from '@mui/icons-material/Business';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import LinkedInIcon from '@mui/icons-material/LinkedIn'; // CV için ekledim
-import GitHubIcon from '@mui/icons-material/GitHub'; // CV için ekledim
+import LinkedInIcon from '@mui/icons-material/LinkedIn'; 
+import GitHubIcon from '@mui/icons-material/GitHub'; 
 
 const Contact = () => {
   const contactDetails = [

@@ -56,7 +56,7 @@ export default function EmergencyPage() {
   };
 
   const locationString = coordinates
-    ? `📍 Konum Seçildi: ${coordinates.lat.toFixed(5)}, ${coordinates.lng.toFixed(5)}`
+    ? ` Konum Seçildi: ${coordinates.lat.toFixed(5)}, ${coordinates.lng.toFixed(5)}`
     : "Lütfen Haritaya Tıklayarak Konum Seçin"; 
 
   return (

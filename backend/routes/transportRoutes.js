@@ -9,9 +9,6 @@ const {
 } = require('../controllers/transportController');
 
 const { protect } = require('../middlewares/auth');
-
-// KRİTİK EKLENTİ: Frontend'in aradığı kapıları açtık. 
-// Bu rotalar /:id kapısından ÖNCE gelmeli ki "offers" kelimesini ID sanmasın.
 router.get('/offers', (req, res, next) => { req.query.type = 'offer'; next(); }, getTransportList);
 router.get('/requests', (req, res, next) => { req.query.type = 'request'; next(); }, getTransportList);
 

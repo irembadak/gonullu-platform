@@ -6,30 +6,26 @@ const API = axios.create({
   headers: { 'Content-Type': 'application/json' }
 });
 
-// REQUEST INTERCEPTOR: Her isteğe Token ekleme
+// REQUEST INTERCEPTOR
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 }, (err) => Promise.reject(err));
 
-// RESPONSE INTERCEPTOR: Merkezi Hata ve Token Temizleme
+// RESPONSE INTERCEPTOR
 API.interceptors.response.use(
-  (res) => res, // KRİTİK DÜZELTME: Sadece 'res' dönüyoruz ki componentler response.data okurken undefined almasın!
+  (res) => res, 
   (err) => {
     if (err.response?.status === 401 && !window.location.pathname.includes('/login')) {
       localStorage.removeItem('token');
       localStorage.removeItem('user'); 
       window.location.href = '/login';
     }
-    
-    // Backend'den gelen spesifik hata mesajını yakala
     const errorMessage = err.response?.data?.message || err.response?.data || err.message || 'Bir hata oluştu';
     return Promise.reject(errorMessage);
   }
 );
-
-/* --- SERVİSLER --- */
 
 export const authService = {
   login: (credentials) => API.post('/users/login', credentials),

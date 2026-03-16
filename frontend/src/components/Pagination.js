@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Pagination as MuiPagination, Stack } from '@mui/material';
 
 export default function Pagination({ currentPage, totalPages, onPageChange }) {
-  // Eğer sadece 1 sayfa varsa göstermeye gerek yok, temiz UI.
   if (totalPages <= 1) return null;
 
   const handlePageChange = (event, value) => {

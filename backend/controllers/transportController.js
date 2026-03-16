@@ -5,7 +5,6 @@ const ErrorResponse = require('../utils/errorResponse');
 // @desc    Yeni bir ulaşım teklifi veya talebi oluştur
 // @route   POST /api/transport
 exports.createTransport = asyncHandler(async (req, res, next) => {
-    // KRİTİK DÜZELTME: id undefined gelme ihtimaline karşı kurşun geçirmez atama
     req.body.user = req.user._id || req.user.id; 
     
     const transport = await Transport.create(req.body);
@@ -27,8 +26,6 @@ exports.getTransportList = asyncHandler(async (req, res, next) => {
     const list = await Transport.find(filter)
         .populate('user', 'name profilePhoto')
         .sort({ departureTime: 1 });
-
-    // KRİTİK DÜZELTME: Frontend direkt "data" dizisini beklediği için fazladan obje sarmalını kaldırdık
     res.status(200).json(list);
 });
 
@@ -55,8 +52,6 @@ exports.updateTransport = asyncHandler(async (req, res, next) => {
     if (!transport) {
         return next(new ErrorResponse('Ulaşım kaydı bulunamadı', 404));
     }
-
-    // Sahibi mi kontrol et (Kurşun geçirmez kimlik kontrolü)
     const userId = req.user._id || req.user.id;
     if (transport.user.toString() !== userId.toString() && req.user.role !== 'admin') {
         return next(new ErrorResponse('Bu işlem için yetkiniz yok', 401));

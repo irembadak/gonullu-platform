@@ -27,7 +27,7 @@ export default function CreateEvent() {
 
   const handleLocationSelect = (lat, lng) => {
     setEvent(prev => ({ ...prev, lat, lng }));
-    setError(""); // Konum seçilince hatayı temizle
+    setError(""); 
   };
 
   const handleSubmit = async (e) => {
@@ -36,10 +36,8 @@ export default function CreateEvent() {
     
     setIsLoading(true);
     setError("");
-
-    // İsteğin asılı kalmaması için bir Controller oluşturuyoruz
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 saniye sınır
+    const timeoutId = setTimeout(() => controller.abort(), 15000); 
 
     try {
       const payload = {

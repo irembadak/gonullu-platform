@@ -14,8 +14,6 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 const TransportCard = ({ item, currentUser, onDelete }) => {
   const isOwner = currentUser?._id === item.user?._id;
-
-  // Backend'in yeni formatına göre adresleri güvenli bir şekilde alıyoruz
   const fromText = item.from?.address || item.fromLocation || 'Belirtilmedi';
   const toText = item.to?.address || item.toLocation || 'Belirtilmedi';
 
@@ -116,9 +114,6 @@ const TransportationSupport = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true);
-    
-    // KRİTİK DEĞİŞİKLİK: Formdaki düz veriyi, Backend'in o havalı 'objeli' ve 'koordinatlı' formatına çeviriyoruz.
-    // İzmir merkez koordinatlarını (Boylam, Enlem) varsayılan olarak yolluyoruz ki 2dsphere index'i hata vermesin.
     const payload = {
       type: formData.type,
       from: {

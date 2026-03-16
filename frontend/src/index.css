@@ -1,28 +1,21 @@
-/* index.css */
-
-/* Global Reset */
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #f8fafc; /* Projenin genel arka planı */
+  background-color: #f8fafc; 
   color: #2c3e50;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* Kod blokları için temiz font */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* Leaflet haritasının bazen diğer bileşenlerin üstüne çıkmasını engellemek için */
 .leaflet-container {
   z-index: 1;
 }
 
-/* MUI ve diğer bileşenler için global geçiş efekti */
 * {
   transition: background-color 0.2s ease-in-out;
 }

@@ -14,20 +14,12 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  // Firebase ve MongoDB arasındaki köprü fonksiyonu
   const syncUserWithDB = async (firebaseUser) => {
     try {
       const token = await firebaseUser.getIdToken();
       localStorage.setItem('token', token); 
-
-      // 1. Kullanıcıyı MongoDB'den getir
       const response = await api.get(`/users/by-uid/${firebaseUser.uid}`);
-      
-      // API'den gelen veriyi güvenli bir şekilde ayıkla
       const mongoUser = response.data?.data || response.data || response;
-
-      // SADECE MongoDB verisini baz al, Firebase'den gelen kısıtlı verinin onu ezmesine izin verme
       setCurrentUser({
         ...mongoUser,
         firebaseUid: firebaseUser.uid,
@@ -38,7 +30,6 @@ export const AuthProvider = ({ children }) => {
       return mongoUser;
 
     } catch (err) {
-      // 2. Kullanıcı MongoDB'de yoksa
       if (err.response?.status === 404) {
         console.warn("MongoDB kaydı bulunamadı, oluşturuluyor...");
         try {
@@ -46,7 +37,7 @@ export const AuthProvider = ({ children }) => {
             name: firebaseUser.displayName || 'Yeni Kullanıcı', 
             email: firebaseUser.email,
             firebaseUid: firebaseUser.uid,
-            role: 'volunteer' // Yeni kayıtlar için güvenli varsayılan
+            role: 'volunteer' 
           });
 
           const newMongoUser = registerResponse.data?.data || registerResponse.data || registerResponse;
@@ -86,12 +77,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (email, password, userData) => {
-    // 1. Firebase Auth Kaydı
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const token = await userCredential.user.getIdToken();
     localStorage.setItem('token', token);
-
-    // 2. Kendi Veritabanımıza Kayıt
     const response = await api.post('/users/register', {
       ...userData,
       email: userCredential.user.email,

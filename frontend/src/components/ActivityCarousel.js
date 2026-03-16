@@ -10,8 +10,6 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import GroupsIcon from '@mui/icons-material/Groups';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-
-// KRİTİK DEĞİŞİKLİK: Home.js'den gelen 'events' prop'unu burada karşılıyoruz!
 const ActivityCarousel = ({ events = [] }) => {
   const [error, setError] = useState(null);
   const { currentUser } = useContext(AuthContext); 
@@ -24,21 +22,17 @@ const ActivityCarousel = ({ events = [] }) => {
       }
       await eventService.join(eventId);
       alert("Etkinliğe başarıyla katıldınız!");
-      // İsteğe bağlı: Ekranda anında 'Katıldınız' yazsın diye sayfayı yeniletebilir veya state'i güncelleyebilirsin
       window.location.reload(); 
     } catch (err) {
       setError(err || "Katılma işlemi başarısız oldu.");
     }
   };
-
-  // Güvenlik kontrolü: Gelen events boşsa veya undefined ise
   const displayEvents = Array.isArray(events) ? events : [];
 
   return (
     <Box className="activity-carousel-wrapper">
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 2, mb: 3 }}>
         <Typography variant="h5" sx={{ fontWeight: 800, color: '#2c3e50' }}>
-          {/* Başlığı Home.js'de zaten yazdığımız için burayı silebilirsin ama kalması da sorun değil */}
         </Typography>
       </Box>
 
@@ -61,7 +55,6 @@ const ActivityCarousel = ({ events = [] }) => {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1, color: 'text.secondary' }}>
                       <LocationOnIcon sx={{ fontSize: 18, color: '#e74c3c' }} />
                       <Typography variant="body2" sx={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                         {/* Eğer adres string değilse veya yoksa varsayılan metin */}
                         {typeof activity.location?.address === 'string' ? activity.location.address : (typeof activity.location === 'string' ? activity.location : 'Konum Belirtilmedi')}
                       </Typography>
                     </Box>

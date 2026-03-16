@@ -1,7 +1,4 @@
-/* EmergencyForm.css */
-
 .emergency-form {
-  /* MUI Box içinde olduğu için ek sınıfa gerek kalmadı ama geçiş efektlerini koruyalım */
   transition: all 0.3s ease;
 }
 
@@ -9,8 +6,6 @@
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
 }
-
-/* Sayfadaki formun genel duruşu için minimal ayar */
 .MuiTextField-root {
   background-color: white;
 }

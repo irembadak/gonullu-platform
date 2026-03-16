@@ -12,7 +12,7 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const ActivityDetail = () => {
-  const { id } = useParams(); // URL'den etkinlik ID'sini alır
+  const { id } = useParams(); 
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
 
@@ -24,8 +24,6 @@ const ActivityDetail = () => {
     const fetchEventDetail = async () => {
       try {
         const response = await eventService.getById(id);
-        
-        // Kurşun geçirmez veri yakalayıcı
         let data = response;
         if (response && response.data) data = response.data;
         if (data && data.data) data = data.data;
@@ -50,7 +48,6 @@ const ActivityDetail = () => {
     try {
       await eventService.join(id);
       alert("Etkinliğe başarıyla katıldınız! Teşekkür ederiz.");
-      // Katıldıktan sonra sayfayı yenileyerek butonu güncelliyoruz
       window.location.reload(); 
     } catch (err) {
       alert(err || "Bu etkinliğe katılırken bir sorun oluştu.");

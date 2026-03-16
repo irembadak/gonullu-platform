@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import API from "../services/api"; // Standart API köprümüz (Interceptor ile token'ı kendi ekler)
+import API from "../services/api"; 
 import { useAuth } from "../context/AuthContext";
-import { eventService } from "../services/api"; // Katılma işlemi için
+import { eventService } from "../services/api"; 
 import { 
   CircularProgress, 
   Container, 
@@ -22,7 +22,7 @@ export default function Recommend() {
   const [recommendations, setRecommendations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [source, setSource] = useState(null); // Veri AI'dan mı geldi, Fallback'ten mi?
+  const [source, setSource] = useState(null); 
 
   useEffect(() => {
     const fetchRecommendationsFromLiveLocation = () => {
@@ -37,19 +37,16 @@ export default function Recommend() {
           const { latitude, longitude } = position.coords;
           
           try {
-            // KRİTİK DÜZELTME: Backend'in beklediği tam adrese POST atıyoruz
             const res = await API.post("/ai/recommend", { 
               lat: latitude, 
               lng: longitude,
-              userId: currentUser?._id || currentUser?.id // Backend istiyor olabilir
+              userId: currentUser?._id || currentUser?.id 
             });
             
             const data = res.data || res;
-            
-            // KRİTİK DÜZELTME 2: Backend veriyi 'recommendations' objesi içinde yolluyor!
             if (data.success && data.recommendations) {
               setRecommendations(data.recommendations);
-              setSource(data.source); // 'ai' veya 'fallback'
+              setSource(data.source); 
             } else {
               setRecommendations([]);
             }
@@ -111,7 +108,7 @@ export default function Recommend() {
           <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1 }}>
             Konumunuza en yakın ve ilgi alanlarınıza en uygun gönüllülük faaliyetleri.
           </Typography>
-          {/* Fallback (B Planı) devredeyse küçük bir uyarı */}
+          {/* Fallback devredeyse küçük bir uyarı */}
           {source === 'fallback' && (
             <Chip label="Çevrimdışı / Alternatif Öneriler" color="warning" size="small" sx={{ mt: 2 }} />
           )}

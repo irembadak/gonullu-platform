@@ -15,14 +15,10 @@ const transportRoutes = require('./routes/transportRoutes');
 const app = express();
 
 app.set('trust proxy', 1);
-
-// Helmet ayarlarını esnettik (Harita ve harici kaynaklar için)
 app.use(helmet({
     crossOriginResourcePolicy: false,
     crossOriginEmbedderPolicy: false
 }));
-
-// CORS Ayarları - localhost:3000'e tam izin
 app.use(cors({
     origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
     credentials: true,
@@ -30,15 +26,11 @@ app.use(cors({
 }));
 
 app.use(express.json());
-
-// İstek limiti
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 1000 // Test sırasında kilitlenmemek için artırdık
+    max: 1000 
 });
 app.use(limiter);
-
-// Rotalar
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/events', eventRoutes);
@@ -50,8 +42,6 @@ app.use('/api/transport', transportRoutes);
 app.get('/api/test', (req, res) => {
     res.json({ success: true, message: "Backend API çalışıyor!" });
 });
-
-// Hata yakalayıcı (En sonda olmalı)
 app.use(errorHandler);
 
 module.exports = app;

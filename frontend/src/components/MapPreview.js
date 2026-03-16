@@ -3,16 +3,12 @@ import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap } from 're
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Box, TextField, List, ListItem, ListItemText, Paper, CircularProgress } from '@mui/material';
-
-// Leaflet ikon hatalarını çözen standart ayar
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
   iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
-
-// Yer seçme özelliği (Sadece onLocationSelect varsa çalışır)
 function LocationMarker({ position, setPosition, onLocationSelect }) {
   useMapEvents({
     click(e) {
@@ -24,8 +20,6 @@ function LocationMarker({ position, setPosition, onLocationSelect }) {
   });
   return position === null ? null : <Marker position={position}></Marker>;
 }
-
-// Harita merkezini değiştiren yardımcı bileşen
 function ChangeView({ center }) {
   const map = useMap();
   useEffect(() => {
@@ -33,14 +27,11 @@ function ChangeView({ center }) {
   }, [center, map]);
   return null;
 }
-
-// KRİTİK DEĞİŞİKLİK: events = [] prop'unu buraya ekledik ki ana sayfadan gelenleri içeri alabilsin.
 const MapPreview = ({ onLocationSelect, events = [] }) => {
   const [position, setPosition] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
-  // İzmir koordinatları
   const [mapCenter, setMapCenter] = useState([38.4237, 27.1428]);
 
   const handleSearch = async () => {
@@ -121,7 +112,6 @@ const MapPreview = ({ onLocationSelect, events = [] }) => {
 
         {/* EĞER DIŞARIDAN ETKİNLİKLER (events) GELDİYSE ONLARI HARİTAYA DİZ */}
         {events && events.length > 0 && events.map((event) => {
-          // MongoDB konumları [boylam, enlem] olarak kaydeder, Leaflet ise [enlem, boylam] okur.
           if (event.location && event.location.coordinates && event.location.coordinates.length === 2) {
             const lng = event.location.coordinates[0];
             const lat = event.location.coordinates[1];
@@ -138,7 +128,7 @@ const MapPreview = ({ onLocationSelect, events = [] }) => {
               </Marker>
             );
           }
-          return null; // Koordinatı yoksa haritaya basma
+          return null; 
         })}
       </MapContainer>
     </Box>

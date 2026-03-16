@@ -31,18 +31,14 @@ const Navbar = () => {
   };
 
   if (loading) return null;
-
-  // Menü Linkleri - "Etkinlik Oluştur" artık sabitlendi
   const navLinks = [
     { title: "Ana Sayfa", path: "/" },
     { title: "Gönüllü Faaliyetler", path: "/activities" },
     { title: "Acil Destek", path: "/emergency" },
     { title: "Ulaşım", path: "/transportation" },
     { title: "AI Öneriler", path: "/recommend" },
-    { title: "Etkinlik Oluştur", path: "/create-event" }, // STK'lar için direkt erişim
+    { title: "Etkinlik Oluştur", path: "/create-event" },
   ];
-
-  // Sadece Adminler için ekstra panel
   if (currentUser?.role === "admin") {
     navLinks.push({ title: "Admin Panel", path: "/admin", isAdmin: true });
   }
